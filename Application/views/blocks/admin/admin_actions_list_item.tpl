@@ -1,0 +1,2 @@
+<td valign="top" class="[{$listclass}]" height="15"><div class="listitemfloating"><a href="Javascript:top.oxid.admin.editThis('[{$listitem->oxactions__oxid->value}]');" class="[{$listclass}]">[{$listitem->oxactions__oxsort->value}]</a></div></td>
+[{$smarty.block.parent}]
