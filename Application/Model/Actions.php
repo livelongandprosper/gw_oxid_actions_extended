@@ -25,8 +25,10 @@ class Actions extends Actions_parent {
 
 	public function isMultilingualField($fieldName) {
 		if(
-			   $fieldName == 'gw_head'
+			$fieldName == 'gw_head'
 			|| $fieldName == 'gw_subhead'
+			|| $fieldName == 'gw_link'
+			|| $fieldName == 'gw_linktext'
 		) {
 			return true;
 		}

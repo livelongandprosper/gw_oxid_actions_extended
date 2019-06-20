@@ -9,6 +9,7 @@
 	class ViewConfig extends ViewConfig_parent {
 
 		protected $_oActionsList = null;
+		protected $_oBannerList = null;
 
 		public function getActions() {
 			if($this->_oActionsList === null) {
@@ -17,6 +18,15 @@
 			}
 
 			return $this->_oActionsList;
+		}
+
+		public function getBanners() {
+			if($this->_oBannerList === null) {
+				$this->_oBannerList = oxNew(ActionList::class);
+				$this->_oBannerList->loadBanners();
+			}
+
+			return $this->_oBannerList;
 		}
 
 		/**

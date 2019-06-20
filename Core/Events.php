@@ -29,50 +29,47 @@
 			}
 		}
 
+		/**
+		 * @param $table_name
+		 * @param $column_name
+		 * @param $datatype
+		 */
+		private static function add_db_field($table_name, $column_name, $datatype) {
+			$gw_head_exists = DatabaseProvider::getDb()->GetOne("SHOW COLUMNS FROM `$table_name` LIKE '$column_name'");
+			if(!$gw_head_exists) {
+				DatabaseProvider::getDb()->execute(
+					"ALTER TABLE `$table_name` ADD `$column_name` $datatype;"
+				);
+			}
+		}
+
 		public static function onActivate() {
 			// self::add_db_key('oxarticles', 'GW_VARIANTS_KEY', array("OXVARSELECT"));
 
-			$gw_head_exists = DatabaseProvider::getDb()->GetOne("SHOW COLUMNS FROM `oxactions` LIKE 'gw_head'");
-			if(!$gw_head_exists) {
-				DatabaseProvider::getDb()->execute(
-					"ALTER TABLE `oxactions` ADD `gw_head` VARCHAR(255) NOT NULL COMMENT 'action header lang 1';"
-				);
-			}
+			// header db fields
 
-			$gw_subhead_exists = DatabaseProvider::getDb()->GetOne("SHOW COLUMNS FROM `oxactions` LIKE 'gw_subhead'");
-			if(!$gw_subhead_exists) {
-				DatabaseProvider::getDb()->execute(
-					"ALTER TABLE `oxactions` ADD `gw_subhead` VARCHAR(255) NOT NULL COMMENT 'action subheader lang 1';"
-				);
-			}
+			self::add_db_field('oxactions', 'gw_head', "VARCHAR(255) NOT NULL COMMENT 'action header lang 1'");
+			self::add_db_field('oxactions', 'gw_subhead', "VARCHAR(1024) NOT NULL COMMENT 'action subheader lang 1'");
 
-			$gw_head_1_exists = DatabaseProvider::getDb()->GetOne("SHOW COLUMNS FROM `oxactions` LIKE 'gw_head_1'");
-			if(!$gw_head_1_exists) {
-				DatabaseProvider::getDb()->execute(
-					"ALTER TABLE `oxactions` ADD `gw_head_1` VARCHAR(255) NOT NULL COMMENT 'action header lang 2';"
-				);
-			}
+			self::add_db_field('oxactions', 'gw_head_1', "VARCHAR(255) NOT NULL COMMENT 'action header lang 2'");
+			self::add_db_field('oxactions', 'gw_subhead_1', "VARCHAR(1024) NOT NULL COMMENT 'action subheader lang 2'");
 
-			$gw_subhead_1_exists = DatabaseProvider::getDb()->GetOne("SHOW COLUMNS FROM `oxactions` LIKE 'gw_subhead_1'");
-			if(!$gw_subhead_1_exists) {
-				DatabaseProvider::getDb()->execute(
-					"ALTER TABLE `oxactions` ADD `gw_subhead_1` VARCHAR(255) NOT NULL COMMENT 'action subheader lang 2';"
-				);
-			}
+			self::add_db_field('oxactions', 'gw_head_2', "VARCHAR(255) NOT NULL COMMENT 'action header lang 3'");
+			self::add_db_field('oxactions', 'gw_subhead_2', "VARCHAR(1024) NOT NULL COMMENT 'action subheader lang 3'");
 
-			$gw_head_2_exists = DatabaseProvider::getDb()->GetOne("SHOW COLUMNS FROM `oxactions` LIKE 'gw_head_2'");
-			if(!$gw_head_2_exists) {
-				DatabaseProvider::getDb()->execute(
-					"ALTER TABLE `oxactions` ADD `gw_head_2` VARCHAR(255) NOT NULL COMMENT 'action header lang 3';"
-				);
-			}
 
-			$gw_subhead_2_exists = DatabaseProvider::getDb()->GetOne("SHOW COLUMNS FROM `oxactions` LIKE 'gw_subhead_2'");
-			if(!$gw_subhead_2_exists) {
-				DatabaseProvider::getDb()->execute(
-					"ALTER TABLE `oxactions` ADD `gw_subhead_2` VARCHAR(255) NOT NULL COMMENT 'action subheader lang 3';"
-				);
-			}
+			// action link db fields
+
+			self::add_db_field('oxactions', 'gw_link', "VARCHAR(255) NOT NULL COMMENT 'action more link lang 1'");
+			self::add_db_field('oxactions', 'gw_link_text', "VARCHAR(255) NOT NULL COMMENT 'action more link text lang 1'");
+
+			self::add_db_field('oxactions', 'gw_link_1', "VARCHAR(255) NOT NULL COMMENT 'action more link lang 2'");
+			self::add_db_field('oxactions', 'gw_link_text_1', "VARCHAR(255) NOT NULL COMMENT 'action more link text lang 2'");
+
+			self::add_db_field('oxactions', 'gw_link_2', "VARCHAR(255) NOT NULL COMMENT 'action more link lang 3'");
+			self::add_db_field('oxactions', 'gw_link_text_2', "VARCHAR(255) NOT NULL COMMENT 'action more link text lang 3'");
+
+			self::add_db_field('oxactions', 'gw_layout', "TINYINT(1) UNSIGNED DEFAULT 1 NOT NULL COMMENT 'defines the layout of a banner'");
 
 			$oDbMetaDataHandler = oxNew(DbMetaDataHandler::class);
 			$oDbMetaDataHandler->updateViews();
