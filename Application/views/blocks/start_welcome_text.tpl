@@ -31,7 +31,7 @@
             <div class="gw-action-header">
                 <div class="gw-action-heading">
                     <h2>
-                        [{if $action->oxactions__gw_head->value}][{$action->oxactions__gw_head->value}][{else}][{$action->oxactions__oxtitle->value}][{/if}]
+                        [{if $action->oxactions__gw_link->value != ''}]<a href="[{$action->oxactions__gw_link->value}]">[{/if}][{if $action->oxactions__gw_head->value}][{$action->oxactions__gw_head->value}][{else}][{$action->oxactions__oxtitle->value}][{/if}][{if $action->oxactions__gw_link->value != ''}]</a>[{/if}]
                     </h2>
                     <span class="gw-action-subheading">[{$action->oxactions__gw_subhead->value}]</span>
                 </div>
