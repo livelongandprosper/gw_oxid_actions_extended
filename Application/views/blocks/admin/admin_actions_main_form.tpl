@@ -101,4 +101,13 @@
             </select>
         </td>
     </tr>
+    <tr>
+        <td class="text">
+            <b>Zusätzliche CSS-Klassen:</b>
+        </td>
+        <td class="text">
+            <input type="text" class="editinput" size="60" name="editval[oxactions__gw_additional_css_classes]" value="[{$edit->oxactions__gw_additional_css_classes->value}]" [{$readonly}]>
+        </td>
+    </tr>
+
 [{/if}]

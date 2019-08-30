@@ -4,7 +4,7 @@
  * @author 	Gregor Wendland <gregor@gewend.de>
  * @copyright Copyright (c) 2018-2019, Gregor Wendland
  * @package gw
- * @version 2019-01-09
+ * @version 2019-08-29
  */
 
 /**
@@ -19,7 +19,7 @@ $aModule = array(
     'id'           => 'gw_oxid_actions_extended',
     'title'        => 'Erweiterte Aktionen',
 //     'thumbnail'    => 'out/admin/img/logo.jpg',
-    'version'      => '1.0.1',
+    'version'      => '1.0.2',
     'author'       => 'Gregor Wendland',
     'email'		   => 'kontakt@gewend.de',
     'url'		   => 'https://www.gewend.de',
@@ -27,6 +27,7 @@ $aModule = array(
     	'de'		=> 'Erweitert die Möglichkeiten von OXID eShop Aktionen<ul>
 							<li>Aktionen erhalten extra Text</li>
 							<li>Banner können mit extra Attributen versehen werden (große Box, kleine Box)</li>
+							<li>Banner können mit zusätzlichen CSS-Klassen versehen werden</li>
 						</ul>',
     ),
     'extend'       => array(

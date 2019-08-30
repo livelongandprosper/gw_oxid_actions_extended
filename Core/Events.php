@@ -70,6 +70,7 @@
 			self::add_db_field('oxactions', 'gw_link_text_2', "VARCHAR(255) NOT NULL COMMENT 'action more link text lang 3'");
 
 			self::add_db_field('oxactions', 'gw_layout', "TINYINT(1) UNSIGNED DEFAULT 1 NOT NULL COMMENT 'defines the layout of a banner'");
+			self::add_db_field('oxactions', 'gw_additional_css_classes', "VARCHAR(255) NOT NULL COMMENT 'additional css classes'");
 
 			$oDbMetaDataHandler = oxNew(DbMetaDataHandler::class);
 			$oDbMetaDataHandler->updateViews();

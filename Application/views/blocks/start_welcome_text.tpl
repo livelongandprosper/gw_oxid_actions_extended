@@ -2,7 +2,7 @@
     <div class="gw-banner-wrapper">
         [{foreach from=$oViewConf->getBanners() item="banner"}]
             [{assign var="sBannerPictureUrl" value=$banner->getBannerPictureUrl()}]
-            <div class="gw-banner layout-[{$banner->oxactions__gw_layout->value}]">
+            <div class="gw-banner layout-[{$banner->oxactions__gw_layout->value}][{if $banner->oxactions__gw_additional_css_classes->value}] [{$banner->oxactions__gw_additional_css_classes->value}][{/if}]">
                 [{assign var="sBannerLink" value=$banner->getBannerLink()}]
                 [{if $sBannerLink}]
                 <a class="gw-action-link" href="[{$sBannerLink}]">
@@ -27,7 +27,7 @@
     [{foreach from=$oViewConf->getActions() item="action"}]
     [{assign var="action_articles" value=$action->getArticleList()}]
     [{if count($action_articles) > 0}]
-        <div class="gw-action">
+        <div class="gw-action[{if $action->oxactions__gw_additional_css_classes->value}] [{$action->oxactions__gw_additional_css_classes->value}][{/if}]">
             <div class="gw-action-header">
                 <div class="gw-action-heading">
                     <h2>
