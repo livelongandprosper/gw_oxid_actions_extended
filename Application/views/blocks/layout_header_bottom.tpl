@@ -11,7 +11,9 @@
                 [{$banner->oxactions__gw_subhead->value}]
                 <div class="gw-special-text">[{$banner->oxactions__gw_popup_content->value}]</div>
             </div>
-            <div class="gw-special-period">[{if $banner->oxactions__oxactivefrom->value != '0000-00-00 00:00:00'}][{$banner->oxactions__oxactivefrom->value|date_format:"%d.%m %H:%M"}][{/if}][{if $banner->oxactions__oxactiveto->value != '0000-00-00 00:00:00'}] &dash; [{$banner->oxactions__oxactiveto->value|date_format:"%d.%m %H:%M"}][{/if}]</div>
+            [{if $banner->oxactions__gw_bottom_text->value}]
+                <div class="gw-special-period">[{$banner->oxactions__gw_bottom_text->value}]</div>
+            [{/if}]
         </div>
     </div>
 [{/foreach}]

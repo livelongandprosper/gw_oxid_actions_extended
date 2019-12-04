@@ -31,12 +31,23 @@
     </tr>
     <tr>
         <td class="text">
-            <b>Unterzeile:</b>
+            <b>Unterüberschrift:</b>
         </td>
         <td class="text">
             <input type="text" class="editinput" size="60" name="editval[oxactions__gw_subhead]" value="[{$edit->oxactions__gw_subhead->value}]" [{$readonly}]>
         </td>
     </tr>
+
+    [{if $edit->oxactions__oxtype->value == 4}]
+        <tr>
+            <td class="text">
+                <b>Fußtext:</b>
+            </td>
+            <td class="text">
+                <input type="text" class="editinput" size="60" name="editval[oxactions__gw_bottom_text]" value="[{$edit->oxactions__gw_bottom_text->value}]" [{$readonly}]>
+            </td>
+        </tr>
+    [{/if}]
 
     [{if $edit->oxactions__oxtype->value == 0 || $edit->oxactions__oxtype->value == 1}]
         <!-- link -->

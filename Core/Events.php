@@ -51,6 +51,9 @@
 			self::add_db_field('oxactions', 'gw_popup_content', "TEXT NOT NULL COMMENT 'pop up text lang 1'");
 			self::add_db_field('oxactions', 'gw_popup_content_1', "TEXT NOT NULL COMMENT 'pop up text lang 2'");
 			self::add_db_field('oxactions', 'gw_popup_content_2', "TEXT NOT NULL COMMENT 'pop up text lang 3'");
+			self::add_db_field('oxactions', 'oxactions__gw_bottom_text', "VARCHAR(255) NOT NULL COMMENT 'pop up bottom text lang 1'");
+			self::add_db_field('oxactions', 'oxactions__gw_bottom_text_1', "VARCHAR(255) NOT NULL COMMENT 'pop up bottom text lang 2'");
+			self::add_db_field('oxactions', 'oxactions__gw_bottom_text_2', "VARCHAR(255) NOT NULL COMMENT 'pop up bottom text lang 3'");
 
 			// header db fields
 
