@@ -4,7 +4,7 @@
  * @author 	Gregor Wendland <gregor@gewend.de>
  * @copyright Copyright (c) 2018-2019, Gregor Wendland
  * @package gw
- * @version 2019-08-29
+ * @version 2019-12-04
  */
 
 /**
@@ -19,7 +19,7 @@ $aModule = array(
     'id'           => 'gw_oxid_actions_extended',
     'title'        => 'Erweiterte Aktionen',
 //     'thumbnail'    => 'out/admin/img/logo.jpg',
-    'version'      => '1.0.2',
+    'version'      => '1.0.3',
     'author'       => 'Gregor Wendland',
     'email'		   => 'kontakt@gewend.de',
     'url'		   => 'https://www.gewend.de',
@@ -28,6 +28,7 @@ $aModule = array(
 							<li>Aktionen erhalten extra Text</li>
 							<li>Banner können mit extra Attributen versehen werden (große Box, kleine Box)</li>
 							<li>Banner können mit zusätzlichen CSS-Klassen versehen werden</li>
+							<li>Zusätzlicher Aktions-Typ PopUp</li>
 						</ul>',
     ),
     'extend'       => array(
@@ -49,6 +50,11 @@ $aModule = array(
 			'block' => 'start_welcome_text',
 			'file' => 'Application/views/blocks/start_welcome_text.tpl'
 		),
+		array(
+			'template' => 'layout/header.tpl',
+			'block' => 'layout_header_bottom',
+			'file' => 'Application/views/blocks/layout_header_bottom.tpl'
+		),
 
 		// backend
 		array(
@@ -56,7 +62,6 @@ $aModule = array(
 			'block' => 'admin_actions_main_form',
 			'file' => 'Application/views/blocks/admin/admin_actions_main_form.tpl'
 		),
-
 		array(
 			'template' => 'actions_list.tpl',
 			'block' => 'admin_actions_list_colgroup',

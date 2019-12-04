@@ -10,6 +10,7 @@
 
 		protected $_oActionsList = null;
 		protected $_oBannerList = null;
+		protected $_oPopUpList = null;
 
 		public function getActions() {
 			if($this->_oActionsList === null) {
@@ -63,15 +64,42 @@
 		public $function_exist_gw_get_banners = true;
 		public function gw_get_banners() {
 
-			$oBannerList = null;
+			if($this->_oBannerList === null) {
+				$oBannerList = "";
 
-			if ($this->getConfig()->getConfigParam('bl_perfLoadAktion')) {
-				$oBannerList = oxNew('oxActionList');
-				$oBannerList->loadBanners();
+				if ($this->getConfig()->getConfigParam('bl_perfLoadAktion')) {
+					$oBannerList = oxNew('oxActionList');
+					$oBannerList->loadBanners();
+				}
+
+				$this->_oBannerList = $oBannerList;
+
+			}
+			return $this->_oBannerList;
+		}
+
+		/**
+		 * Returns active active popup list
+		 *
+		 * @return objects
+		 */
+		public $function_exist_gw_get_popups = true;
+		public function gw_get_popups() {
+
+			if($this->_oPopUpList === null) {
+				$oPopUpList = "";
+
+				if ($this->getConfig()->getConfigParam('bl_perfLoadAktion')) {
+					$oPopUpList = oxNew('oxActionList');
+					$oPopUpList->loadPopUps();
+				}
+
+				$this->_oPopUpList = $oPopUpList;
 			}
 
-			return $oBannerList;
+			return $this->_oPopUpList;
 		}
+
 
 	}
 ?>

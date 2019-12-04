@@ -46,6 +46,12 @@
 		public static function onActivate() {
 			// self::add_db_key('oxarticles', 'GW_VARIANTS_KEY', array("OXVARSELECT"));
 
+			// popup text
+
+			self::add_db_field('oxactions', 'gw_popup_content', "TEXT NOT NULL COMMENT 'pop up text lang 1'");
+			self::add_db_field('oxactions', 'gw_popup_content_1', "TEXT NOT NULL COMMENT 'pop up text lang 2'");
+			self::add_db_field('oxactions', 'gw_popup_content_2', "TEXT NOT NULL COMMENT 'pop up text lang 3'");
+
 			// header db fields
 
 			self::add_db_field('oxactions', 'gw_head', "VARCHAR(255) NOT NULL COMMENT 'action header lang 1'");

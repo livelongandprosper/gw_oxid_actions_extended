@@ -13,5 +13,18 @@
 				. " order by oxsort";
 			$this->selectString($sQ);
 		}
+
+		/**
+		 * load active shop popup list
+		 */
+		public function loadPopUps() {
+			$oBaseObject = $this->getBaseObject();
+			$oViewName = $oBaseObject->getViewName();
+			$sQ = "select * from {$oViewName} where oxtype=4 and " . $oBaseObject->getSqlActiveSnippet()
+				. " and oxshopid='" . $this->getConfig()->getShopId() . "' " . $this->_getUserGroupFilter()
+				. " order by oxsort";
+			$this->selectString($sQ);
+		}
+
 	}
 ?>
