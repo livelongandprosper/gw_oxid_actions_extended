@@ -8,7 +8,7 @@
                 <a class="gw-action-link" href="[{$sBannerLink}]">
                 [{/if}]
                 [{if $sBannerPictureUrl}]
-                    <img src="[{$sBannerPictureUrl}]" alt="[{$banner->oxactions__gw_link_text->value}]">
+                    <img src="[{$oViewConf->getImageUrl('white.gif')}]" data-src="[{$sBannerPictureUrl}]" alt="[{$banner->oxactions__gw_link_text->value}]">
                 [{/if}]
                     [{if $banner->oxactions__gw_link_text->value}]<div class="gw-banner-link-text"><span>[{$banner->oxactions__gw_link_text->value}]</span></div>[{/if}]
                 [{if $sBannerLink}]
