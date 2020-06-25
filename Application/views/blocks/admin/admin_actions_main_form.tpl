@@ -26,7 +26,7 @@
             <b>Hauptüberschrift:</b>
         </td>
         <td class="text">
-            <input type="text" class="editinput" size="60" name="editval[oxactions__gw_head]" value="[{$edit->oxactions__gw_head->value}]" [{$readonly}]>
+            <textarea type="text" class="editinput" name="editval[oxactions__gw_head]" [{$readonly}] style="width: 100%;height:32px;padding:3px;">[{$edit->oxactions__gw_head->value}]</textarea>
         </td>
     </tr>
     <tr>
@@ -34,7 +34,7 @@
             <b>Unterüberschrift:</b>
         </td>
         <td class="text">
-            <input type="text" class="editinput" size="60" name="editval[oxactions__gw_subhead]" value="[{$edit->oxactions__gw_subhead->value}]" [{$readonly}]>
+            <textarea type="text" class="editinput" name="editval[oxactions__gw_subhead]" [{$readonly}] style="width: 100%;height:32px;padding:3px;">[{$edit->oxactions__gw_subhead->value}]</textarea>
         </td>
     </tr>
 
@@ -49,10 +49,11 @@
         </tr>
     [{/if}]
 
-    [{if $edit->oxactions__oxtype->value == 0 || $edit->oxactions__oxtype->value == 1}]
+    [{if $edit->oxactions__oxtype->value == 0 || $edit->oxactions__oxtype->value == 1 || $edit->oxactions__oxtype->value == 4}]
         <!-- link -->
         <tr>
             <td class="text" colspan="2">
+                <br>
                 <b>Verlinkung:</b>
             </td>
         <tr>
@@ -121,6 +122,8 @@
             </select>
         </td>
     </tr>
+[{/if}]
+[{if $edit->oxactions__oxtype->value == 3 || $edit->oxactions__oxtype->value == 4}]
     <tr>
         <td class="text">
             <b>Zusätzliche CSS-Klassen:</b>
@@ -129,7 +132,14 @@
             <input type="text" class="editinput" size="60" name="editval[oxactions__gw_additional_css_classes]" value="[{$edit->oxactions__gw_additional_css_classes->value}]" [{$readonly}]>
         </td>
     </tr>
-
+    <tr>
+        <td class="text">
+            <b>Zusätzliches CSS:</b>
+        </td>
+        <td class="text">
+            <textarea type="text" class="editinput" name="editval[oxactions__gw_additional_css]" [{$readonly}] style="width: 100%;height:80px;padding:3px;">[{$edit->oxactions__gw_additional_css->value}]</textarea>
+        </td>
+    </tr>
 [{/if}]
 [{if $edit->oxactions__oxtype->value == 4}]
 <!-- Line -->
@@ -142,7 +152,7 @@
             <b>PopUp Text:</b>
         </td>
         <td class="text">
-            <textarea type="text" class="editinput" name="editval[oxactions__gw_popup_content]" [{$readonly}]>[{$edit->oxactions__gw_popup_content->value}]</textarea>
+            <textarea type="text" class="editinput" name="editval[oxactions__gw_popup_content]" [{$readonly}] style="width:100%;height:80px;padding:3px;">[{$edit->oxactions__gw_popup_content->value}]</textarea>
         </td>
         <td width="180" valign="top" style="padding: 0 25px 0 25px; border-left: 1px solid #ddd;">
             [{if (!($edit->oxactions__oxpic->value=="nopic.jpg" || $edit->oxactions__oxpic->value==""))}]

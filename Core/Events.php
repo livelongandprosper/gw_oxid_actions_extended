@@ -80,6 +80,11 @@
 
 			self::add_db_field('oxactions', 'gw_layout', "TINYINT(1) UNSIGNED DEFAULT 1 NOT NULL COMMENT 'defines the layout of a banner'");
 			self::add_db_field('oxactions', 'gw_additional_css_classes', "VARCHAR(255) NOT NULL COMMENT 'additional css classes'");
+			self::add_db_field('oxactions', 'gw_additional_css', "TEXT NOT NULL COMMENT 'additional css which is added to header'");
+
+			// additonal css
+
+
 
 			$oDbMetaDataHandler = oxNew(DbMetaDataHandler::class);
 			$oDbMetaDataHandler->updateViews();
