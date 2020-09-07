@@ -4,7 +4,8 @@
 
 [{foreach from=$oViewConf->gw_get_popups() item="banner"}]
     [{assign var="sBannerPictureUrl" value=$banner->getBannerPictureUrl()}]
-    <div class="gw-special-offer[{if $banner->oxactions__gw_additional_css_classes->value}] [{$banner->oxactions__gw_additional_css_classes->value}][{/if}]" data-image="[{$sBannerPictureUrl}]">
+    [{assign var="cookieExpirationTime" value=$banner->oxactions__gw_cookie_expiration->value}]
+    <div class="gw-special-offer[{if $banner->oxactions__gw_additional_css_classes->value}] [{$banner->oxactions__gw_additional_css_classes->value}][{/if}]" data-image="[{$sBannerPictureUrl}]"[{if $cookieExpirationTime}] data-cookie-expiration-time="[{$cookieExpirationTime}]"[{/if}]>
         <div>
             <div class="gw-special-title">[{$banner->oxactions__gw_head->rawValue}]</div>
             <div class="gw-special-subtitle">

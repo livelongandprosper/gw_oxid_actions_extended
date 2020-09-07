@@ -1,10 +1,10 @@
 <?php
 /**
  * @abstract
- * @author 	Gregor Wendland <gregor@gewend.de>
- * @copyright Copyright (c) 2018-2019, Gregor Wendland
+ * @author 	Gregor Wendland <hello@gregor-wendland.com>
+ * @copyright Copyright (c) 2018-2020, Gregor Wendland
  * @package gw
- * @version 2019-12-04
+ * @version 2020-08-28
  */
 
 /**
@@ -19,7 +19,7 @@ $aModule = array(
     'id'           => 'gw_oxid_actions_extended',
     'title'        => 'Erweiterte Aktionen',
 //     'thumbnail'    => 'out/admin/img/logo.jpg',
-    'version'      => '1.0.4',
+    'version'      => '1.1.0',
     'author'       => 'Gregor Wendland',
     'email'		   => 'kontakt@gewend.de',
     'url'		   => 'https://www.gewend.de',
@@ -29,6 +29,7 @@ $aModule = array(
 							<li>Banner können mit extra Attributen versehen werden (große Box, kleine Box)</li>
 							<li>Banner können mit zusätzlichen CSS-Klassen versehen werden</li>
 							<li>Zusätzlicher Aktions-Typ PopUp</li>
+							<li>Häufigkeit der Einblendung der PopUps tagesgenau steuerbar (implentiert mithilfe von Cookies)</li>
 						</ul>',
     ),
     'extend'       => array(

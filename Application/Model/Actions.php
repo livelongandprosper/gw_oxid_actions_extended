@@ -10,6 +10,10 @@ class Actions extends Actions_parent {
 
 	protected $_gw_aArticleList = null;
 
+	/**
+	 * @param int $limit
+	 * @return array
+	 */
 	public function getArticleList($limit = 4) {
 		if($this->_gw_aArticleList === null) {
 			$this->_gw_aArticleList = [];
@@ -23,6 +27,10 @@ class Actions extends Actions_parent {
 		return $this->_gw_aArticleList;
 	}
 
+	/**
+	 * @param $fieldName
+	 * @return bool
+	 */
 	public function isMultilingualField($fieldName) {
 		if(
 			$fieldName == 'gw_head'
@@ -34,7 +42,5 @@ class Actions extends Actions_parent {
 		}
 		return parent::isMultilingualField($fieldName);
 	}
-
-
 }
 ?>

@@ -144,18 +144,21 @@
 [{if $edit->oxactions__oxtype->value == 4}]
 <!-- Line -->
     <tr>
-        <td width="100%" colspan="2"><hr></td>
+        <td width="100%" colspan="4">
+            <hr>
+            <strong>PopUp-Einstellungen</strong>
+        </td>
     </tr>
 
     <tr>
-        <td class="text">
-            <b>PopUp Text:</b>
+        <td class="text" valign="top">
+            <b>PopUp-Text:</b>
         </td>
         <td class="text">
             <textarea type="text" class="editinput" name="editval[oxactions__gw_popup_content]" [{$readonly}] style="width:100%;height:80px;padding:3px;">[{$edit->oxactions__gw_popup_content->value}]</textarea>
         </td>
         <td width="180" valign="top" style="padding: 0 25px 0 25px; border-left: 1px solid #ddd;">
-            [{if (!($edit->oxactions__oxpic->value=="nopic.jpg" || $edit->oxactions__oxpic->value==""))}]
+            [{if (!($edit->oxactions__noxpic->value=="nopic.jpg" || $edit->oxactions__oxpic->value==""))}]
             <div style="padding-bottm: 10px;">
                 <a href="[{$edit->getBannerPictureUrl()}]" target="_blank">
                     <img src="[{$edit->getBannerPictureUrl()}]" width="120px;" border="0">
@@ -203,6 +206,14 @@
                     </td>
                 </tr>
             </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="text" valign="top">
+            <b>PopUp-Anzeige-Häufigkeit:</b>
+        </td>
+        <td class="text">
+            <input type="number" step="1" min="0" class="editinput" size="60" name="editval[oxactions__gw_cookie_expiration]" value="[{$edit->oxactions__gw_cookie_expiration->value}]" [{$readonly}] />[{oxinputhelp ident="HELP_GENERAL_SORT"}]
         </td>
     </tr>
 <!-- Ende rechte Seite -->
