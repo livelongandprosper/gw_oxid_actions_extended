@@ -19,7 +19,7 @@ $aModule = array(
     'id'           => 'gw_oxid_actions_extended',
     'title'        => 'Erweiterte Aktionen',
 //     'thumbnail'    => 'out/admin/img/logo.jpg',
-    'version'      => '1.1.1',
+    'version'      => '1.1.2',
     'author'       => 'Gregor Wendland',
     'email'		   => 'kontakt@gewend.de',
     'url'		   => 'https://www.gewend.de',
@@ -38,7 +38,7 @@ $aModule = array(
 		OxidEsales\Eshop\Application\Model\ActionList::class => gw\gw_oxid_actions_extended\Application\Model\ActionList::class,
     ),
     'settings'		=> array(
-
+		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_numberofarticles', 'type' => 'str', 'value' => '4'),
     ),
 	'events'		=> array(
     ),

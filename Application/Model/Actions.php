@@ -15,6 +15,11 @@ class Actions extends Actions_parent {
 	 * @return array
 	 */
 	public function getArticleList($limit = 4) {
+		$myConfig = $this->getConfig();
+
+		if($myConfig->getConfigParam('gw_oxid_actions_extended_numberofarticles') >= 0) {
+			$limit = intval($myConfig->getConfigParam('gw_oxid_actions_extended_numberofarticles'));
+		}
 		if($this->_gw_aArticleList === null) {
 			$this->_gw_aArticleList = [];
 			$oArtList = oxNew(ArticleList::class);

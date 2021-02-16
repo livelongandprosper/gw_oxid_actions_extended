@@ -117,8 +117,13 @@
         </td>
         <td class="text">
             <select name="editval[oxactions__gw_layout]" class="editinput">
-                <option value="1"[{if 1 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Groß / hochkannt</option>
-                <option value="2"[{if 2 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Klein / quer</option>
+                <optgroup label="Responsive Spalten (Masonry)">
+                    <option value="1"[{if 1 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Groß / hochkannt</option>
+                    <option value="2"[{if 2 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Klein / quer</option>
+                </optgroup>
+                <optgroup label="Unterhalb">
+                    <option value="3"[{if 3 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Volle Breite</option>
+                </optgroup>
             </select>
         </td>
     </tr>
@@ -210,10 +215,10 @@
     </tr>
     <tr>
         <td class="text" valign="top">
-            <b>PopUp-Anzeige-Häufigkeit:</b>
+            <b>[{oxmultilang ident="GW_POPUP_EXPIRATION_TIME"}]:</b>
         </td>
         <td class="text">
-            <input type="number" step="1" min="0" class="editinput" size="60" name="editval[oxactions__gw_cookie_expiration]" value="[{$edit->oxactions__gw_cookie_expiration->value}]" [{$readonly}] />[{oxinputhelp ident="HELP_GENERAL_SORT"}]
+            <input type="number" step="1" min="0" class="editinput" size="60" name="editval[oxactions__gw_cookie_expiration]" value="[{$edit->oxactions__gw_cookie_expiration->value}]" [{$readonly}] />[{oxinputhelp ident="HELP_GW_POPUP_EXPIRATION_TIME"}]
         </td>
     </tr>
 <!-- Ende rechte Seite -->
