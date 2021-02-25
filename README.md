@@ -1,6 +1,7 @@
 # Extended Actions
 
-...
+Extend OXID eShop Actions / Banners. JavaScript can be included or excluded.
+
 
 ## Install
 - This module has to be put to the folder

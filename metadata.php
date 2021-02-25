@@ -19,7 +19,7 @@ $aModule = array(
     'id'           => 'gw_oxid_actions_extended',
     'title'        => 'Erweiterte Aktionen',
 //     'thumbnail'    => 'out/admin/img/logo.jpg',
-    'version'      => '1.1.2',
+    'version'      => '1.2.0',
     'author'       => 'Gregor Wendland',
     'email'		   => 'kontakt@gewend.de',
     'url'		   => 'https://www.gewend.de',
@@ -30,6 +30,7 @@ $aModule = array(
 							<li>Banner können mit zusätzlichen CSS-Klassen versehen werden</li>
 							<li>Zusätzlicher Aktions-Typ PopUp</li>
 							<li>Häufigkeit der Einblendung der PopUps tagesgenau steuerbar (implentiert mithilfe von Cookies)</li>
+							<li>Es kann bestimmt werden, dass ein PopUp erst nach X klicks angezeigt wird</li>
 						</ul>',
     ),
     'extend'       => array(
@@ -39,6 +40,7 @@ $aModule = array(
     ),
     'settings'		=> array(
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_numberofarticles', 'type' => 'str', 'value' => '4'),
+		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_include_js', 'type' => 'bool', 'value' => 0),
     ),
 	'events'		=> array(
     ),

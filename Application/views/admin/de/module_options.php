@@ -11,4 +11,7 @@ $aLang = array(
 	// configuration parameters
 	'SHOP_MODULE_gw_oxid_actions_extended_numberofarticles' => 'Anzahl von Artikeln, die geladen werden',
 	'HELP_SHOP_MODULE_gw_oxid_attributes_extended_merge_parent' => '',
+
+	'SHOP_MODULE_gw_oxid_actions_extended_include_js' => 'JavaScript einbinden',
+	'HELP_SHOP_MODULE_gw_oxid_actions_extended_include_js' => '',
 );
