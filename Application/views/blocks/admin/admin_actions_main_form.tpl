@@ -131,6 +131,14 @@
 [{if $edit->oxactions__oxtype->value == 3 || $edit->oxactions__oxtype->value == 4}]
     <tr>
         <td class="text">
+            <b>Slide-ID:</b>
+        </td>
+        <td class="text">
+            <input type="text" class="editinput" size="60" name="editval[oxactions__gw_slide_id]" value="[{$edit->oxactions__gw_slide_id->value}]" [{$readonly}]>
+        </td>
+    </tr>
+    <tr>
+        <td class="text">
             <b>Zusätzliche CSS-Klassen:</b>
         </td>
         <td class="text">
