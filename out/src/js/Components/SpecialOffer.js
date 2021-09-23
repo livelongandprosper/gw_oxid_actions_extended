@@ -28,30 +28,58 @@ export class SpecialOffer {
 			initDelayCookie(clickDelay);
 
 			if (Kukki.has(clickDelayCookieId) && Kukki.get(clickDelayCookieId) > 0) {
+				const $body = $("body");
+				if(
+					!$body.hasClass(("cl-account"))
+					&& !$body.hasClass(("cl-register"))
+					&& !$body.hasClass(("cl-newsletter"))
+					&& !$body.hasClass(("cl-account"))
+					&& !$body.hasClass(("cl-account_password"))
+					&& !$body.hasClass(("cl-account_user"))
+					&& !$body.hasClass(("cl-account_order"))
+					&& !$body.hasClass(("cl-account_newsletter"))
+					&& !$body.hasClass(("cl-account_wishlist"))
+					&& !$body.hasClass(("is-checkout"))
+					&& !$body.hasClass(("is-nl"))
+				) {
+					$(document).on("click", function (event) {
+						const $target = $(event.target);
 
-				$(document).on("click", function () {
+						if(
+							!$target.is("button")
+							&& !$target.is(".dropDown")
+							&& !$target.is(".gw-size-table-trigger")
+							&& !$target.is(".gw-social-media-details")
+							&& !$target.is(".gw-img-thumb")
+							&& !$body.hasClass(". modal-open")
+							&& !$target.is("img.img-responsive") // zoom image trigger
+							&& !$(".pswp--open").length // zoom image open
+						) {
 
-					countClick(clickDelayCookieId);
-					if (canShowDelayedPopUp(clickDelayCookieId)) {
+							countClick(clickDelayCookieId);
 
-						window.setTimeout(function () {
+						}
+						if (canShowDelayedPopUp(clickDelayCookieId)) {
 
-							showPopUp(container);
+							window.setTimeout(function () {
 
-						}, 2000);
+								showPopUp(container);
 
-					}
+							}, 2000);
 
-				});
 
+						}
+					});
+				}
 			}
 
 			// Show PopUp after document ready
 			if (
-				!Kukki.has(hideSpecialOfferCookieId)
+				container
+				&& !Kukki.has(hideSpecialOfferCookieId)
 				&& (
 					!clickDelay
-					|| (clickDelay && Kukki.has(clickDelayCookieId) && Kukki.get(clickDelayCookieId) == 0)
+					|| (clickDelay && Kukki.has(clickDelayCookieId) && Kukki.get(clickDelayCookieId) <= 0)
 				)
 			) {
 
@@ -138,6 +166,7 @@ export class SpecialOffer {
 				{
 					path: '/'
 				});
+			return parseInt(Kukki.get(cookieId));
 		}
 
 		/**

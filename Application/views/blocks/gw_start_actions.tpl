@@ -1,3 +1,4 @@
+[{assign var="oConfig" value=$oViewConf->getConfig()}]
 [{if count($oViewConf->getActions()) > 0}]
     [{foreach from=$oViewConf->getActions() item="action"}]
     [{assign var="action_articles" value=$action->getArticleList()}]
@@ -14,8 +15,7 @@
             <a class="gw-action-link" href="[{$action->oxactions__gw_link->value}]">[{if $action->oxactions__gw_link_text->value}][{$action->oxactions__gw_link_text->value}][{/if}]</a>
             [{/if}]
         </div>
-
-        [{include file="widget/product/list.tpl" slider=true type="grid" listId="productList"|cat:$action->oxactions__oxid->value products=$action_articles}]
+        [{include file="widget/product/list.tpl" slider=$oConfig->getConfigParam('gw_oxid_actions_extended_slider') type="grid" listId="productList"|cat:$action->oxactions__oxid->value products=$action_articles}]
 
         [{if $action->oxactions__gw_link->value != ''}]
             <a class="gw-action-link" href="[{$action->oxactions__gw_link->value}]">[{if $action->oxactions__gw_link_text->value}][{$action->oxactions__gw_link_text->value}][{/if}]</a>
