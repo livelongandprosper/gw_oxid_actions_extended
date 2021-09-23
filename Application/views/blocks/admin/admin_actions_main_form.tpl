@@ -131,6 +131,14 @@
 [{if $edit->oxactions__oxtype->value == 3 || $edit->oxactions__oxtype->value == 4}]
     <tr>
         <td class="text">
+            <b>Slide-ID:</b>
+        </td>
+        <td class="text">
+            <input type="text" class="editinput" size="60" name="editval[oxactions__gw_slide_id]" value="[{$edit->oxactions__gw_slide_id->value}]" [{$readonly}]>
+        </td>
+    </tr>
+    <tr>
+        <td class="text">
             <b>Zusätzliche CSS-Klassen:</b>
         </td>
         <td class="text">
@@ -221,5 +229,15 @@
             <input type="number" step="1" min="0" class="editinput" size="60" name="editval[oxactions__gw_cookie_expiration]" value="[{$edit->oxactions__gw_cookie_expiration->value}]" [{$readonly}] />[{oxinputhelp ident="HELP_GW_POPUP_EXPIRATION_TIME"}]
         </td>
     </tr>
+    <tr>
+        <td class="text" valign="top">
+            <b>[{oxmultilang ident="GW_POPUP_COOKIE_DELAY_BY_NR_CLICKS"}]:</b>
+        </td>
+        <td class="text">
+            <input type="number" step="1" min="0" class="editinput" size="10" name="editval[oxactions__gw_cookie_delay_by_nr_clicks]" value="[{$edit->oxactions__gw_cookie_delay_by_nr_clicks->value}]" [{$readonly}] />[{oxinputhelp ident="HELP_GW_POPUP_COOKIE_DELAY_BY_NR_CLICKS"}]
+        </td>
+    </tr>
+
+
 <!-- Ende rechte Seite -->
 [{/if}]

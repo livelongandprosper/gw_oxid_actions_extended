@@ -78,11 +78,13 @@
 			// additonal css
 			self::add_db_field('oxactions', 'gw_layout', "TINYINT(1) UNSIGNED DEFAULT 1 NOT NULL COMMENT 'defines the layout of a banner'");
 			self::add_db_field('oxactions', 'gw_additional_css_classes', "VARCHAR(255) NOT NULL COMMENT 'additional css classes'");
+			self::add_db_field('oxactions', 'gw_slide_id', "VARCHAR(255) NOT NULL COMMENT 'html id of a slide'");
 			self::add_db_field('oxactions', 'gw_additional_css', "TEXT NOT NULL COMMENT 'additional css which is added to header'");
 
 			// cookie expiration options
 			self::add_db_field('oxactions', 'gw_cookie_expiration', "INT(11) UNSIGNED DEFAULT 0 NOT NULL COMMENT 'how often a pop up should be displayed in days'");
 
+			self::add_db_field('oxactions', 'gw_cookie_delay_by_nr_clicks', "SMALLINT UNSIGNED DEFAULT 0 NOT NULL COMMENT 'how often a user has to click on the site to see the popup'");
 
 
 			$oDbMetaDataHandler = oxNew(DbMetaDataHandler::class);
@@ -91,6 +93,7 @@
 		public static function onDeactivate() {
 			$config = \OxidEsales\Eshop\Core\Registry::getConfig();
 			DatabaseProvider::getDb()->execute("DELETE FROM oxtplblocks WHERE oxshopid='".$config->getShopId()."' AND oxmodule='gw_oxid_actions_extended';");
+//			DatabaseProvider::getDb()->execute("ALTER TABLE oxactions DROP INDEX justanexample;");
 			exec( "rm -f " .$config->getConfigParam( 'sCompileDir' )."/smarty/*" );
 			exec( "rm -Rf " .$config->getConfigParam( 'sCompileDir' )."/*" );
 			$oDbMetaDataHandler = oxNew(DbMetaDataHandler::class);
