@@ -19,7 +19,7 @@ $aModule = array(
     'id'           => 'gw_oxid_actions_extended',
     'title'        => 'Erweiterte Aktionen',
 //     'thumbnail'    => 'out/admin/img/logo.jpg',
-    'version'      => '1.2.1',
+    'version'      => '1.3.0',
     'author'       => 'Gregor Wendland',
     'email'		   => 'kontakt@gewend.de',
     'url'		   => 'https://www.gewend.de',
@@ -31,6 +31,7 @@ $aModule = array(
 							<li>Zusätzlicher Aktions-Typ PopUp</li>
 							<li>Häufigkeit der Einblendung der PopUps tagesgenau steuerbar (implentiert mithilfe von Cookies)</li>
 							<li>Es kann bestimmt werden, dass ein PopUp erst nach X klicks angezeigt wird</li>
+							<li>Es kann ein Slider generiert werden; der Block [{block name="gw_start_slider"}][{/block}] muss in page/shop/start.tpl eingefügt werden</li>
 						</ul>',
     ),
     'extend'       => array(
@@ -42,6 +43,7 @@ $aModule = array(
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_include_js', 'type' => 'bool', 'value' => 0),
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_slider', 'type' => 'bool', 'value' => 0),
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_numberofarticles', 'type' => 'str', 'value' => '4'),
+		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_randombanners', 'type' => 'str', 'value' => '0'),
     ),
 	'events'		=> array(
     ),
@@ -58,6 +60,11 @@ $aModule = array(
 			'template' => 'page/shop/start.tpl',
 			'block' => 'gw_start_banners',
 			'file' => 'Application/views/blocks/gw_start_banners.tpl'
+		),
+		array(
+			'template' => 'page/shop/start.tpl',
+			'block' => 'gw_start_slider',
+			'file' => 'Application/views/blocks/gw_start_slider.tpl'
 		),
 		array(
 			'template' => 'page/shop/start.tpl',

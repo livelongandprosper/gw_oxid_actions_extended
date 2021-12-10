@@ -42,10 +42,29 @@ class Actions extends Actions_parent {
 			|| $fieldName == 'gw_subhead'
 			|| $fieldName == 'gw_link'
 			|| $fieldName == 'gw_linktext'
+			|| $fieldName == 'gw_linktext'
+			|| $fieldName == 'gw_linktext'
+			|| $fieldName == 'gw_linktext'
 		) {
 			return true;
 		}
 		return parent::isMultilingualField($fieldName);
+	}
+
+	/**
+	 * Override getBannerPictureUrl to make it possible to get the additional images
+	 */
+	public function getBannerPictureUrl($imageDbField = null)
+	{
+		if($imageDbField !== null) {
+			$classMemeberName = "oxactions__" . $imageDbField;
+			if (isset($this->{$classMemeberName}) && $this->{$classMemeberName}->value) {
+				$sPromoDir = \OxidEsales\Eshop\Core\Registry::getUtilsFile()->normalizeDir(\OxidEsales\Eshop\Core\UtilsFile::PROMO_PICTURE_DIR);
+				return $this->getConfig()->getPictureUrl($sPromoDir . $this->{$classMemeberName}->value, false);
+			}
+			return "";
+		}
+		return parent::getBannerPictureUrl();
 	}
 }
 ?>

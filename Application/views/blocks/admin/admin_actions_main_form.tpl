@@ -6,21 +6,27 @@
 <script>
     var selectList = document.querySelectorAll("[name='editval[oxactions__oxtype]'");
     selectList[0].options[selectList[0].length] = new Option("PopUp", 4, false)
+    selectList[0].options[selectList[0].length] = new Option("Slide des Homepage-Sliders", 5, false)
 </script>
 [{/literal}]
 
+[{*
+    Action Types
+    1 Aktion
+    2 Promotion
+    3 Banner
+    4 PopUp
+    5 Slide des Homepage Sliders
+*}]
+
 [{* options für article actions *}]
-[{if ($edit->oxactions__oxtype->value == 0 || $edit->oxactions__oxtype->value == 1 || $edit->oxactions__oxtype->value == 4) && $oxid != "-1"}]
+[{if ($edit->oxactions__oxtype->value == 0 || $edit->oxactions__oxtype->value == 1 || $edit->oxactions__oxtype->value == 3 || $edit->oxactions__oxtype->value == 4 || $edit->oxactions__oxtype->value == 5) && $oxid != "-1"}]
     <!-- Line -->
     <tr>
         <td width="100%" colspan="2"><hr></td>
     </tr>
 
     <!-- head / subhead -->
-    <tr>
-        <td class="text" colspan="2">
-            <b>Überschrift:</b>
-        </td>
     <tr>
         <td class="text">
             <b>Hauptüberschrift:</b>
@@ -31,13 +37,16 @@
     </tr>
     <tr>
         <td class="text">
-            <b>Unterüberschrift:</b>
+            [{if $edit->oxactions__oxtype->value == 5}]
+                <b>Slider-Text:</b>
+            [{else}]
+                <b>Unterüberschrift:</b>
+            [{/if}]
         </td>
         <td class="text">
             <textarea type="text" class="editinput" name="editval[oxactions__gw_subhead]" [{$readonly}] style="width: 100%;height:32px;padding:3px;">[{$edit->oxactions__gw_subhead->value}]</textarea>
         </td>
     </tr>
-
     [{if $edit->oxactions__oxtype->value == 4}]
         <tr>
             <td class="text">
@@ -49,7 +58,7 @@
         </tr>
     [{/if}]
 
-    [{if $edit->oxactions__oxtype->value == 0 || $edit->oxactions__oxtype->value == 1 || $edit->oxactions__oxtype->value == 4}]
+    [{if $edit->oxactions__oxtype->value == 0 || $edit->oxactions__oxtype->value == 1 || $edit->oxactions__oxtype->value == 4 || $edit->oxactions__oxtype->value == 5}]
         <!-- link -->
         <tr>
             <td class="text" colspan="2">
@@ -105,7 +114,7 @@
 
     <tr>
         <td class="text">
-            <b>Banner-Text:</b>
+            <b>Link-Text:</b>
         </td>
         <td class="text">
             <textarea type="text" class="editinput" name="editval[oxactions__gw_link_text]" style="width: 100%;" [{$readonly}]>[{$edit->oxactions__gw_link_text->value}]</textarea>
@@ -117,6 +126,9 @@
         </td>
         <td class="text">
             <select name="editval[oxactions__gw_layout]" class="editinput">
+                <optgroup label="Startseitenbanner">
+                    <option value=4"[{if 4 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Abgerundete Kanten Banner</option>
+                </optgroup>
                 <optgroup label="Responsive Spalten (Masonry)">
                     <option value="1"[{if 1 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Groß / hochkannt</option>
                     <option value="2"[{if 2 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Klein / quer</option>
@@ -131,10 +143,10 @@
 [{if $edit->oxactions__oxtype->value == 3 || $edit->oxactions__oxtype->value == 4}]
     <tr>
         <td class="text">
-            <b>Slide-ID:</b>
+            <b>ID:</b>
         </td>
         <td class="text">
-            <input type="text" class="editinput" size="60" name="editval[oxactions__gw_slide_id]" value="[{$edit->oxactions__gw_slide_id->value}]" [{$readonly}]>
+            gw-[{$edit->getId()|md5}]
         </td>
     </tr>
     <tr>
@@ -150,6 +162,7 @@
             <b>Zusätzliches CSS:</b>
         </td>
         <td class="text">
+            Verwende diesen Selektor: #gw-[{$edit->getId()|md5}]<br>
             <textarea type="text" class="editinput" name="editval[oxactions__gw_additional_css]" [{$readonly}] style="width: 100%;height:80px;padding:3px;">[{$edit->oxactions__gw_additional_css->value}]</textarea>
         </td>
     </tr>
@@ -213,9 +226,6 @@
                             </tr>
                             [{/block}]
                         </table>
-
-                        <input type="button" value="[{oxmultilang ident="GENERAL_ASSIGNARTICLE"}]" class="edittext" onclick="JavaScript:showDialog('&cl=actions_main&oxpromotionaoc=article&oxid=[{$oxid}]');" [{$readonly}]>
-
                     </td>
                 </tr>
             </table>
@@ -237,7 +247,130 @@
             <input type="number" step="1" min="0" class="editinput" size="10" name="editval[oxactions__gw_cookie_delay_by_nr_clicks]" value="[{$edit->oxactions__gw_cookie_delay_by_nr_clicks->value}]" [{$readonly}] />[{oxinputhelp ident="HELP_GW_POPUP_COOKIE_DELAY_BY_NR_CLICKS"}]
         </td>
     </tr>
-
-
-<!-- Ende rechte Seite -->
 [{/if}]
+
+[{* Slider-Bilder *}]
+[{if $edit->oxactions__oxtype->value == 5}]
+    <tr>
+        <td width="180" valign="top" style="padding: 0 25px 0 25px; border-left: 1px solid #ddd;">
+            [{if (!($edit->oxactions__noxpic->value=="nopic.jpg" || $edit->oxactions__gw_oxpic_slider_default->value==""))}]
+            <div style="padding-bottm: 10px;">
+                <a href="[{$edit->getBannerPictureUrl("gw_oxpic_slider_default")}]" target="_blank">
+                    <img src="[{$edit->getBannerPictureUrl("gw_oxpic_slider_default")}]" width="120px;" border="0">
+                </a>
+                <div style="width: 120px; color: #666; padding-top: 5px; border-top: 1px solid #ccc; text-align: center;">
+                    Slider Standard (alle Geräte)
+                </div>
+            </div>
+            [{/if}]
+        </td>
+
+        <td valign="top" class="edittext" align="left" style="width:100%;padding-left:5px;padding-bottom:10px;">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td class="edittext">
+                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="listTable">
+                            <tr>
+                                <td class="text">
+                                    <b>Slider Bild Standard:</b>
+                                </td>
+                                <td class="edittext">
+                                    <input class="editinput" name="myfile[PROMO@oxactions__gw_oxpic_slider_default]" type="file" size="26"[{$readonly_fields}]>
+                                    <input id="gw_oxpic_slider_default" type="hidden" name="editval[oxactions__gw_oxpic_slider_default]" value="[{$edit->oxactions__gw_oxpic_slider_default->value}]" readonly>
+                                </td>
+                                <td nowrap="nowrap">
+                                    [{if (!($edit->oxactions__gw_oxpic_slider_default->value=="nopic.jpg" || $edit->oxactions__gw_oxpic_slider_default->value=="")) && !$readonly}]
+                                    <div style="display: inline-block;">
+                                        <a href="Javascript:DeletePic('gw_oxpic_slider_default');" class="deleteText"><span class="ico"></span><span style="float: left;>">[{oxmultilang ident="GENERAL_DELETE"}]</span></a>
+                                    </div>
+                                    [{/if}]
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td width="180" valign="top" style="padding: 0 25px 0 25px; border-left: 1px solid #ddd;">
+            [{if (!($edit->oxactions__noxpic->value=="nopic.jpg" || $edit->oxactions__gw_oxpic_slider_medium->value==""))}]
+            <div style="padding-bottm: 10px;">
+                <a href="[{$edit->getBannerPictureUrl("gw_oxpic_slider_medium")}]" target="_blank">
+                    <img src="[{$edit->getBannerPictureUrl("gw_oxpic_slider_medium")}]" width="120px;" border="0">
+                </a>
+                <div style="width: 120px; color: #666; padding-top: 5px; border-top: 1px solid #ccc; text-align: center;">
+                    Slider Bild ab Tablet hochkannt Breite
+                </div>
+            </div>
+            [{/if}]
+        </td>
+        <td valign="top" class="edittext" align="left" style="width:100%;padding-left:5px;padding-bottom:10px;">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td class="edittext">
+                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="listTable">
+                            <tr>
+                                <td class="text">
+                                    <b>Slider Bild Tablet:</b>
+                                </td>
+                                <td class="edittext">
+                                    <input class="editinput" name="myfile[PROMO@oxactions__gw_oxpic_slider_medium]" type="file" size="26"[{$readonly_fields}]>
+                                    <input id="gw_oxpic_slider_medium" type="hidden"  name="editval[oxactions__gw_oxpic_slider_medium]" value="[{$edit->oxactions__gw_oxpic_slider_medium->value}]" readonly>
+                                </td>
+                                <td nowrap="nowrap">
+                                    [{if (!($edit->oxactions__gw_oxpic_slider_medium->value=="nopic.jpg" || $edit->oxactions__gw_oxpic_slider_medium->value=="")) && !$readonly}]
+                                    <div style="display: inline-block;">
+                                        <a href="Javascript:DeletePic('gw_oxpic_slider_medium');" class="deleteText"><span class="ico"></span><span style="float: left;>">[{oxmultilang ident="GENERAL_DELETE"}]</span></a>
+                                    </div>
+                                    [{/if}]
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td width="180" valign="top" style="padding: 0 25px 0 25px; border-left: 1px solid #ddd;">
+            [{if (!($edit->oxactions__noxpic->value=="nopic.jpg" || $edit->oxactions__gw_oxpic_slider_large->value==""))}]
+            <div style="padding-bottm: 10px;">
+                <a href="[{$edit->getBannerPictureUrl("gw_oxpic_slider_large")}]" target="_blank">
+                    <img src="[{$edit->getBannerPictureUrl("gw_oxpic_slider_large")}]" width="120px;" border="0">
+                </a>
+                <div style="width: 120px; color: #666; padding-top: 5px; border-top: 1px solid #ccc; text-align: center;">
+                    Slider Bild ab Desktop-Breite
+                </div>
+            </div>
+            [{/if}]
+        </td>
+        <td valign="top" class="edittext" align="left" style="width:100%;padding-left:5px;padding-bottom:10px;">
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td class="edittext">
+                        <table cellspacing="0" cellpadding="0" width="100%" border="0" class="listTable">
+                            <tr>
+                                <td class="text">
+                                    <b>Slider Bild Tablet:</b>
+                                </td>
+                                <td class="edittext">
+                                    <input class="editinput" name="myfile[PROMO@oxactions__gw_oxpic_slider_large]" type="file" size="26"[{$readonly_fields}]>
+                                    <input id="gw_oxpic_slider_large" type="hidden"  name="editval[oxactions__gw_oxpic_slider_large]" value="[{$edit->oxactions__gw_oxpic_slider_large->value}]" readonly>
+                                </td>
+                                <td nowrap="nowrap">
+                                    [{if (!($edit->oxactions__gw_oxpic_slider_large->value=="nopic.jpg" || $edit->oxactions__gw_oxpic_slider_large->value=="")) && !$readonly}]
+                                    <div style="display: inline-block;">
+                                        <a href="Javascript:DeletePic('gw_oxpic_slider_large');" class="deleteText"><span class="ico"></span><span style="float: left;>">[{oxmultilang ident="GENERAL_DELETE"}]</span></a>
+                                    </div>
+                                    [{/if}]
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+[{/if}]
+<!-- Ende rechte Seite -->

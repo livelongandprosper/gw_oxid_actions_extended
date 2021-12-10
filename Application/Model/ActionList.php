@@ -26,5 +26,39 @@
 			$this->selectString($sQ);
 		}
 
+		/**
+		 * load active shop slide list of start slider
+		 */
+		public function loadSlider() {
+			$oBaseObject = $this->getBaseObject();
+			$oViewName = $oBaseObject->getViewName();
+			$sQ = "select * from {$oViewName} where oxtype=5 and " . $oBaseObject->getSqlActiveSnippet()
+				. " and oxshopid='" . $this->getConfig()->getShopId() . "' " . $this->_getUserGroupFilter()
+				. " order by oxsort";
+			$this->selectString($sQ);
+		}
+
+		/**
+		 * load active shop banner list
+		 */
+		public function loadBanners() {
+			$config = $this->getConfig();
+			$randomBanners = (int)$config->getConfigParam('gw_oxid_actions_extended_randombanners');
+			if($randomBanners > 0) {
+				$randomBanners = intval($randomBanners);
+				$oBaseObject = $this->getBaseObject();
+				$oViewName = $oBaseObject->getViewName();
+				$sQ = "select * from {$oViewName} where oxtype=3 and " . $oBaseObject->getSqlActiveSnippet()
+					. " and oxshopid='" . $this->getConfig()->getShopId() . "' " . $this->_getUserGroupFilter()
+					. ($randomBanners ? "order by RAND()" : " order by oxsort")
+					. ($randomBanners ? "LIMIT ".(int)$randomBanners : "")
+				;
+				$this->selectString($sQ);
+			} else {
+				parent::loadBanners();
+			}
+		}
+
+
 	}
 ?>

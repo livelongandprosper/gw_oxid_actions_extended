@@ -75,7 +75,7 @@
 			self::add_db_field('oxactions', 'gw_link_2', "VARCHAR(255) NOT NULL COMMENT 'action more link lang 3'");
 			self::add_db_field('oxactions', 'gw_link_text_2', "VARCHAR(255) NOT NULL COMMENT 'action more link text lang 3'");
 
-			// additonal css
+			// additional css
 			self::add_db_field('oxactions', 'gw_layout', "TINYINT(1) UNSIGNED DEFAULT 1 NOT NULL COMMENT 'defines the layout of a banner'");
 			self::add_db_field('oxactions', 'gw_additional_css_classes', "VARCHAR(255) NOT NULL COMMENT 'additional css classes'");
 			self::add_db_field('oxactions', 'gw_slide_id', "VARCHAR(255) NOT NULL COMMENT 'html id of a slide'");
@@ -83,8 +83,18 @@
 
 			// cookie expiration options
 			self::add_db_field('oxactions', 'gw_cookie_expiration', "INT(11) UNSIGNED DEFAULT 0 NOT NULL COMMENT 'how often a pop up should be displayed in days'");
-
 			self::add_db_field('oxactions', 'gw_cookie_delay_by_nr_clicks', "SMALLINT UNSIGNED DEFAULT 0 NOT NULL COMMENT 'how often a user has to click on the site to see the popup'");
+
+			//  additional images
+			self::add_db_field('oxactions', 'gw_oxpic_slider_default', "VARCHAR(255) NOT NULL COMMENT 'slider image standard lang 1'");
+			self::add_db_field('oxactions', 'gw_oxpic_slider_default_1', "VARCHAR(255) NOT NULL COMMENT 'slider image standard lang 2'");
+			self::add_db_field('oxactions', 'gw_oxpic_slider_default_2', "VARCHAR(255) NOT NULL COMMENT 'slider image standard lang 3'");
+			self::add_db_field('oxactions', 'gw_oxpic_slider_medium', "VARCHAR(255) NOT NULL COMMENT 'slider image tablet lang 1'");
+			self::add_db_field('oxactions', 'gw_oxpic_slider_medium_1', "VARCHAR(255) NOT NULL COMMENT 'slider image tablet lang 2'");
+			self::add_db_field('oxactions', 'gw_oxpic_slider_medium_2', "VARCHAR(255) NOT NULL COMMENT 'slider image tablet lang 3'");
+			self::add_db_field('oxactions', 'gw_oxpic_slider_large', "VARCHAR(255) NOT NULL COMMENT 'slider image large displays lang 1'");
+			self::add_db_field('oxactions', 'gw_oxpic_slider_large_1', "VARCHAR(255) NOT NULL COMMENT 'slider image large displays lang 2'");
+			self::add_db_field('oxactions', 'gw_oxpic_slider_large_2', "VARCHAR(255) NOT NULL COMMENT 'slider image large displays lang 3'");
 
 
 			$oDbMetaDataHandler = oxNew(DbMetaDataHandler::class);

@@ -11,6 +11,7 @@
 		protected $_oActionsList = null;
 		protected $_oBannerList = null;
 		protected $_oPopUpList = null;
+		protected $_oSliderList = null;
 
 		public function getActions() {
 			if($this->_oActionsList === null) {
@@ -100,6 +101,27 @@
 			return $this->_oPopUpList;
 		}
 
+
+		/**
+		 * Returns active active slider list
+		 *
+		 * @return objects
+		 */
+		public function gw_get_start_slider() {
+
+			if($this->_oSliderList === null) {
+				$oSliderList = "";
+
+				if ($this->getConfig()->getConfigParam('bl_perfLoadAktion')) {
+					$oSliderList = oxNew('oxActionList');
+					$oSliderList->loadSlider();
+				}
+
+				$this->_oSliderList = $oSliderList;
+			}
+
+			return $this->_oSliderList;
+		}
 
 	}
 ?>
