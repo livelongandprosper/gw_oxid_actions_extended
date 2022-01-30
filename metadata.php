@@ -10,7 +10,7 @@
 /**
  * Metadata version
  */
-$sMetadataVersion = '2'; // see https://docs.oxid-esales.com/developer/en/6.0/modules/skeleton/metadataphp/version20.html
+$sMetadataVersion = '2.0'; // see https://docs.oxid-esales.com/developer/en/6.0/modules/skeleton/metadataphp/version20.html
 
 /**
  * Module information
@@ -46,8 +46,6 @@ $aModule = array(
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_randombanners', 'type' => 'str', 'value' => '0'),
     ),
 	'events'		=> array(
-    ),
-    'files'			=> array(
     ),
 	'blocks' => array(
 		// frontend
