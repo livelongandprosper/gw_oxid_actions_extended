@@ -10,6 +10,8 @@
 
 		protected $_oActionsList = null;
 		protected $_oBannerList = null;
+		protected $_oBannerListLeft = null;
+		protected $_oBannerListRight = null;
 		protected $_oPopUpList = null;
 		protected $_oSliderList = null;
 
@@ -22,13 +24,28 @@
 			return $this->_oActionsList;
 		}
 
-		public function getBanners() {
+		public function getBanners($layout = null) {
 			if($this->_oBannerList === null) {
 				$this->_oBannerList = oxNew(ActionList::class);
-				$this->_oBannerList->loadBanners();
+				$this->_oBannerList->loadBanners($layout);
 			}
 
 			return $this->_oBannerList;
+		}
+
+		public function getBannersLeft() {
+			if($this->_oBannerListLeft === null) {
+				$this->_oBannerListLeft = oxNew(ActionList::class);
+				$this->_oBannerListLeft->loadBanners(5);
+			}
+			return $this->_oBannerListLeft;
+		}
+		public function getBannersRight() {
+			if($this->_oBannerListRight === null) {
+				$this->_oBannerListRight = oxNew(ActionList::class);
+				$this->_oBannerListRight->loadBanners(6);
+			}
+			return $this->_oBannerListRight;
 		}
 
 		/**

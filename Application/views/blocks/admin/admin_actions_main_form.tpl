@@ -128,6 +128,8 @@
             <select name="editval[oxactions__gw_layout]" class="editinput">
                 <optgroup label="Startseitenbanner">
                     <option value=4"[{if 4 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Abgerundete Kanten Banner</option>
+                    <option value=5"[{if 5 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Abgerundete Kanten Banner links</option>
+                    <option value=6"[{if 6 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Abgerundete Kanten Banner rechts</option>
                 </optgroup>
                 <optgroup label="Responsive Spalten (Masonry)">
                     <option value="1"[{if 1 == $edit->oxactions__gw_layout->value}] selected="selected"[{/if}]>Groß / hochkannt</option>

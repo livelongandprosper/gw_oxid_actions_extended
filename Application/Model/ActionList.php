@@ -41,7 +41,7 @@
 		/**
 		 * load active shop banner list
 		 */
-		public function loadBanners() {
+		public function loadBanners($layout = null) {
 			$config = $this->getConfig();
 			$randomBanners = (int)$config->getConfigParam('gw_oxid_actions_extended_randombanners');
 			if($randomBanners > 0) {
@@ -50,6 +50,7 @@
 				$oViewName = $oBaseObject->getViewName();
 				$sQ = "select * from {$oViewName} where oxtype=3 and " . $oBaseObject->getSqlActiveSnippet()
 					. " and oxshopid='" . $this->getConfig()->getShopId() . "' " . $this->_getUserGroupFilter()
+					. ($layout !== null ? " AND gw_layout='" . intval($layout) . "' " : '')
 					. ($randomBanners ? "order by RAND()" : " order by oxsort")
 					. ($randomBanners ? "LIMIT ".(int)$randomBanners : "")
 				;
