@@ -261,7 +261,7 @@
                     <img src="[{$edit->getBannerPictureUrl("gw_oxpic_slider_default")}]" width="120px;" border="0">
                 </a>
                 <div style="width: 120px; color: #666; padding-top: 5px; border-top: 1px solid #ccc; text-align: center;">
-                    Slider Standard (alle Geräte)
+                    Slider Bild ab Handy Breite
                 </div>
             </div>
             [{/if}]
@@ -274,7 +274,7 @@
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="listTable">
                             <tr>
                                 <td class="text">
-                                    <b>Slider Bild Standard:</b>
+                                    <b>Slider Bild ab Handy Breite:</b>
                                 </td>
                                 <td class="edittext">
                                     <input class="editinput" name="myfile[PROMO@oxactions__gw_oxpic_slider_default]" type="file" size="26"[{$readonly_fields}]>
@@ -314,7 +314,7 @@
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="listTable">
                             <tr>
                                 <td class="text">
-                                    <b>Slider Bild Tablet:</b>
+                                    <b>Slider Bild ab Tablet hochkannt Breite:</b>
                                 </td>
                                 <td class="edittext">
                                     <input class="editinput" name="myfile[PROMO@oxactions__gw_oxpic_slider_medium]" type="file" size="26"[{$readonly_fields}]>
@@ -354,7 +354,7 @@
                         <table cellspacing="0" cellpadding="0" width="100%" border="0" class="listTable">
                             <tr>
                                 <td class="text">
-                                    <b>Slider Bild Tablet:</b>
+                                    <b>Slider Bild ab Desktop-Breite:</b>
                                 </td>
                                 <td class="edittext">
                                     <input class="editinput" name="myfile[PROMO@oxactions__gw_oxpic_slider_large]" type="file" size="26"[{$readonly_fields}]>
