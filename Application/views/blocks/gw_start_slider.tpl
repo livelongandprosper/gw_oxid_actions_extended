@@ -11,11 +11,12 @@
 
                         [{if $sSlideUrl_default}]
                             [{* TODO: Lazy load images *}]
-                            <img src="[{$sSlideUrl_default}]"[{if $sSlideUrl_default && $sSlideUrl_medium}]
-                                 srcset="[{$sSlideUrl_default}] 768w,[{$sSlideUrl_medium}] 992w[{if $sSlideUrl_large}],[{$sSlideUrl_large}] 1440w[{/if}]"[{/if}]
-                                 sizes="100vw"
-                                 width="1440" height="470"
-                                 alt="[{$slide->oxactions__gw_head->value}]">
+                            <picture>
+                                [{if $sSlideUrl_large}]<source media="(min-width: 992px)" srcset="[{if $sSlideUrl_large == $sSlideUrl_default}][{$sSlideUrl_medium}][{else}][{$sSlideUrl_large}][{/if}]">[{/if}]
+                                [{if $sSlideUrl_medium}]<source media="(min-width:768px)" srcset="[{$sSlideUrl_medium}]">[{/if}]
+                                <source media="(min-width: 0px)" srcset="[{$sSlideUrl_default}]">
+                                <img src="[{$sSlideUrl_default}]" alt="[{$slide->oxactions__gw_head->value}]">
+                            </picture>
                         [{/if}]
 
                         <div class="gw-slide-text-block">
