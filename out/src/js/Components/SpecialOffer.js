@@ -15,7 +15,9 @@ export class SpecialOffer {
 	static initialize() {
 		const container = document.querySelector(".gw-special-offer");
 		const $specialOfferLink = $(".gw-special-offer .gw-special-link");
+		const $specialOfferNewsletterLink = $(".gw-newsletter-banner .gw-special-link");
 		const hideSpecialOfferCookieId = "hide-special-offer-lightbox" + $(container).data("cookieId");
+		const newsletterCookieId = "zeha-nl-popup";
 		const daysToExpire = parseInt($(container).data("cookieExpirationTime"));
 		const expireDate = daysToExpire ? new Date() : null;
 		const clickDelay = $(container).data("clickDelay");
@@ -127,6 +129,19 @@ export class SpecialOffer {
 						expires: expireDate,
 						path: '/'
 					});
+
+				});
+
+			}
+
+			if($specialOfferNewsletterLink.length) {
+
+				$(document).on("click", ".gw-newsletter-banner .gw-special-link", function() {
+
+					if(typeof gtag !== 'undefined') {
+						gtag("event", "zeha_newsletter_popup_clicked", {
+						});
+					}
 
 				});
 
