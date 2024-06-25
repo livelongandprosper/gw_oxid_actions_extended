@@ -2,50 +2,12 @@
     <div class="gw-banner-wrapper">
         [{* Aberundete Banner Links *}]
         [{foreach from=$oViewConf->getBannersLeft() item="banner"}]
-            [{assign var="sBannerPictureUrl" value=$banner->getBannerPictureUrl()}]
-
-            [{* Aberundete Banner *}]
-            <div class="gw-banner layout-[{$banner->oxactions__gw_layout->value}][{if $banner->oxactions__gw_additional_css_classes->value}] [{$banner->oxactions__gw_additional_css_classes->value}][{/if}]" id="gw-[{$banner->getId()|md5}]">
-                [{assign var="sBannerLink" value=$banner->getBannerLink()}]
-                <div class="gw-banner-text">
-                    <h1>
-                        [{$banner->oxactions__gw_head->value|nl2br}]
-                    </h1>
-                    <p>
-                        [{$banner->oxactions__gw_subhead->value|nl2br}]
-                    </p>
-                </div>
-                [{if $sBannerLink}]
-                <a class="btn btn-primary" href="[{$sBannerLink}]">[{$banner->oxactions__gw_link_text->value|nl2br}]</a>
-                [{/if}]
-                [{if $sBannerPictureUrl}]
-                <img src="[{$oViewConf->getImageUrl('white.gif')}]" data-src="[{$sBannerPictureUrl}]" alt="[{$banner->oxactions__gw_link_text->value}]" width="680" height="270">
-                [{/if}]
-            </div>
+            [{include file="blocks/inc/gw-banner.tpl" banner=$banner sBannerPictureUrl=$banner->getBannerPictureUrl()}]
         [{/foreach}]
 
         [{* Aberundete Banner Rechts *}]
         [{foreach from=$oViewConf->getBannersRight() item="banner"}]
-            [{assign var="sBannerPictureUrl" value=$banner->getBannerPictureUrl()}]
-
-            [{* Aberundete Banner *}]
-            <div class="gw-banner layout-[{$banner->oxactions__gw_layout->value}][{if $banner->oxactions__gw_additional_css_classes->value}] [{$banner->oxactions__gw_additional_css_classes->value}][{/if}]" id="gw-[{$banner->getId()|md5}]">
-                [{assign var="sBannerLink" value=$banner->getBannerLink()}]
-                <div class="gw-banner-text">
-                    <h1>
-                        [{$banner->oxactions__gw_head->value|nl2br}]
-                    </h1>
-                    <p>
-                        [{$banner->oxactions__gw_subhead->value|nl2br}]
-                    </p>
-                </div>
-                [{if $sBannerLink}]
-                <a class="btn btn-primary" href="[{$sBannerLink}]">[{$banner->oxactions__gw_link_text->value|nl2br}]</a>
-                [{/if}]
-                [{if $sBannerPictureUrl}]
-                <img src="[{$oViewConf->getImageUrl('white.gif')}]" data-src="[{$sBannerPictureUrl}]" alt="[{$banner->oxactions__gw_link_text->value}]" width="680" height="270">
-                [{/if}]
-            </div>
+            [{include file="blocks/inc/gw-banner.tpl" banner=$banner sBannerPictureUrl=$banner->getBannerPictureUrl()}]
         [{/foreach}]
 
         [{foreach from=$oViewConf->getBanners() item="banner"}]
