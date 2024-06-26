@@ -19,12 +19,13 @@ $aModule = array(
     'id'           => 'gw_oxid_actions_extended',
     'title'        => 'Erweiterte Aktionen',
 //     'thumbnail'    => 'out/admin/img/logo.jpg',
-    'version'      => '1.3.0',
+    'version'      => '1.4.0',
     'author'       => 'Gregor Wendland',
     'email'		   => 'kontakt@gewend.de',
     'url'		   => 'https://www.gewend.de',
     'description'  => array(
     	'de'		=> 'Erweitert die Möglichkeiten von OXID eShop Aktionen<ul>
+							<li>Ermöglichen die Artikel einer Kategorie als Liste für einen Slider zu erhalten</li>
 							<li>Aktionen erhalten extra Text</li>
 							<li>Banner können mit extra Attributen versehen werden (große Box, kleine Box)</li>
 							<li>Banner können mit zusätzlichen CSS-Klassen versehen werden</li>
@@ -44,6 +45,7 @@ $aModule = array(
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_slider', 'type' => 'bool', 'value' => 0),
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_numberofarticles', 'type' => 'str', 'value' => '4'),
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_randombanners', 'type' => 'str', 'value' => '0'),
+		array('group' => 'gw_oxid_actions_extended_start_cat_slider', 'name' => 'gw_oxid_actions_extended_startslidercat', 'type' => 'str', 'value' => '0'),
     ),
 	'events'		=> array(
     ),
@@ -109,6 +111,7 @@ $aModule = array(
 	'controllers'  => [
 	],
 	'templates' => [
+		'blocks/inc/gw-banner.tpl' => 'gw/gw_oxid_actions_extended/Application/views/blocks/inc/gw-banner.tpl',
 	]
 );
 ?>

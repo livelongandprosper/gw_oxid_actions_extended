@@ -140,5 +140,14 @@
 			return $this->_oSliderList;
 		}
 
+		public function gw_get_category_slider_articles($categoryId, $maxArticleAmount = 10) {
+			$oArtList = oxNew( 'oxarticlelist' );
+			$oArtList->loadCategoryArticles($categoryId, null, $maxArticleAmount);
+			if(sizeof($oArtList)) {
+				return $oArtList;
+			} else {
+				return 0;
+			}
+		}
 	}
 ?>
