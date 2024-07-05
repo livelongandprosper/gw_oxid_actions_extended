@@ -45,7 +45,7 @@ $aModule = array(
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_slider', 'type' => 'bool', 'value' => 0),
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_numberofarticles', 'type' => 'str', 'value' => '4'),
 		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_randombanners', 'type' => 'str', 'value' => '0'),
-		array('group' => 'gw_oxid_actions_extended_start_cat_slider', 'name' => 'gw_oxid_actions_extended_startslidercat', 'type' => 'str', 'value' => '0'),
+		array('group' => 'gw_oxid_actions_extended', 'name' => 'gw_oxid_actions_extended_startslidercat', 'type' => 'str', 'value' => ''),
     ),
 	'events'		=> array(
     ),
