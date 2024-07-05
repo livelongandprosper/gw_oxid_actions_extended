@@ -20,4 +20,6 @@ $aLang = array(
 
 	'SHOP_MODULE_gw_oxid_actions_extended_randombanners' => 'Banner zufällig laden',
 	'HELP_SHOP_MODULE_gw_oxid_actions_extended_randombanners' => 'Bestimmt die Anzahl an Bannern die geladen wird. Ist hier z.B. eine 2 hinterlegt und insgesamt sind 5 Banner aktiv, werden aus diesen 5 Bannern 2 zufällige angezeigt.',
+
+	'SHOP_MODULE_gw_oxid_actions_extended_startslidercat' => 'Startseiten Slider Artikel-Kategorie',
 );
