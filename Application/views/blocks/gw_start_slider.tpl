@@ -15,7 +15,7 @@
                                 [{if $sSlideUrl_large}]<source media="(min-width: 992px)" srcset="[{if $sSlideUrl_large == $sSlideUrl_default}][{$sSlideUrl_medium}][{else}][{$sSlideUrl_large}][{/if}]">[{/if}]
                                 [{if $sSlideUrl_medium}]<source media="(min-width:768px)" srcset="[{$sSlideUrl_medium}]">[{/if}]
                                 <source media="(min-width: 0px)" srcset="[{$sSlideUrl_default}]">
-                                <img src="[{$sSlideUrl_default}]" alt="[{$slide->oxactions__gw_head->value}]">
+                                <img src="[{$sSlideUrl_default}]" alt="[{$slide->oxactions__gw_head->value}]" width="1440" height="570">
                             </picture>
                         [{/if}]
 
