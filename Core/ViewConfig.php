@@ -140,14 +140,13 @@
 			return $this->_oSliderList;
 		}
 
-		public function gw_get_category_slider_articles($categoryId, $maxArticleAmount = 10) {
+		public function gw_get_category_slider_articles($categoryId = '', $maxArticleAmount = 10) {
+			if($categoryId === '') {
+				$categoryId = $this->getConfig()->getConfigParam('gw_oxid_actions_extended_startslidercat');
+			}
 			$oArtList = oxNew( 'oxarticlelist' );
 			$oArtList->loadCategoryArticles($categoryId, null, $maxArticleAmount);
-			if(sizeof($oArtList)) {
-				return $oArtList;
-			} else {
-				return 0;
-			}
+			return $oArtList;
 		}
 	}
 ?>
